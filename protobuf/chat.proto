@@ -1,0 +1,84 @@
+syntax = "proto2";
+package chat;
+
+message Message
+{
+	// 定义消息类型
+	enum TYPE
+	{
+		REGISTER = 0;						// 注册
+		LOGIN = 1;							// 登录
+		ADD_REQUEST = 2;					// 添加好友请求
+		ADD_RESPOND = 3;					// 添加好友响应
+		GET_FRIEND_LIST = 4;				// 获取好友列表
+		GET_USER_INFO = 5;					// 获取用户信息
+		SINGLE_MSG = 6;						// 一对一聊天信息
+		GROUP_MSG = 7;						// 群聊信息
+		CREATE_GROUP = 8;					// 创建群
+		INVITE_ENTER_GROUP = 9;				// 邀请加入群
+		GET_CHAT_RECORD = 10;				// 获取聊天记录
+		GET_GROUP_LIST = 11;				// 获取群列表
+		GET_GROUP_INFO = 12;				// 获取群信息
+		GET_GROUP_USER_LIST = 13;			// 获取群成员列表
+		INVITE_ENTER_GROUP_RESPOND = 14;	// 邀请加入群回复
+		GET_GROUP_CHAT_RECORD = 15;			// 获取群聊天记录
+	}
+
+	// 状态
+	enum STATUS
+	{
+		SUCCESS = 0;			// 成功
+		ERROR = 1;				// 服务器错误
+		PASSWORD_ERROR = 2;		// 密码错误
+		UID_NOEXISTS = 3;		// 用户不存在
+	}
+
+	// 聊天消息格式
+	message Text
+	{
+		required string	src_id = 1;		// 消息发送者
+		required string dst_id = 2;		// 消息接收者
+		required int32	time = 3;		// 消息发送时间
+		required string	msg = 4;		// 文本消息
+	}
+
+	// 用户信息
+	message User_info
+	{
+		required string		uid = 1;		// 用户ID
+		required string		uname = 2; 		// 用户名
+		optional string 	area = 3;		// 地区
+		required int32		friends = 4;	// 好友数
+	}
+
+
+	// 群信息  id, name, own, nums
+	message Group_info
+	{
+		required string 	gid = 1;		// 群ID
+		required string 	name = 2;		// 群名称
+		required string 	own = 3;		// 创建者ID
+		required int32 		nums = 4;		// 群成员数
+	}
+
+
+	required TYPE		msg_type = 1;		// 消息类型，必选
+	optional string		src_id = 2;			// 源用户ID
+	optional string		dst_id = 3;			// 目标用户ID
+	optional string		password = 4;		// 用户密码
+	optional string		user_id	= 5; 		// 操作用户ID
+	optional string		user_name = 6;		// 用户名
+	optional User_info	user_info = 7;		// 用户信息
+	optional Text		msg_text = 8;		// 聊天消息
+	repeated string		user_list = 9;		// 好友列表,只有ID
+	repeated Text		chat_record = 10;	// 聊天记录
+	optional int32		page = 11;			// 聊天记录页索引
+	optional STATUS		status = 12;		// 状态
+	optional Group_info group_info = 13;		// 群信息
+	repeated string 	group_list = 14;		// 群列表
+	repeated string 	group_user_list = 15;	// 群成员列表
+}
+
+
+
+
