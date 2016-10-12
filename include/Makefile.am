@@ -1,0 +1,40 @@
+chatincludedir=$(includedir)
+chatinclude_HEADERS=
+reactor/Timer.h \ 
+reactor/Thread_pool.h \
+reactor/Accept.h \
+reactor/Event_handler.h \
+reactor/Event.h \
+reactor/Poll.h \
+reactor/Timer_heap.h \
+reactor/Reactor_thread.h \
+reactor/Tcp_server.h \
+reactor/Internet_addr.h \
+reactor/Tcp_connection.h \
+reactor/Epoll.h \
+reactor/Reactor.h \
+reactor/Time_stamp.h \
+reactor/Socket.h \
+reactor/Poller.h \
+reactor/Buffer.h \
+protobuf/Coder.h \
+protobuf/chat.pb.h \
+chat/Invite_enter_group.h \
+chat/Module.h \
+chat/Add_user.h \
+chat/Chat_server.h \
+chat/Get_group_chat_record.h \
+chat/Handler.h \
+chat/Get_group_info.h \
+chat/Get_friend_list.h \
+chat/Login.h \
+chat/Get_user_info.h \
+chat/Get_group_user_list.h \
+chat/Get_group_list.h \
+chat/Create_group.h \
+chat/Single_msg.h \
+chat/Register.h \
+chat/Group_msg.h \
+chat/Get_chat_record.h \
+chat/Module_factory.h \
+redis/Redis.h
